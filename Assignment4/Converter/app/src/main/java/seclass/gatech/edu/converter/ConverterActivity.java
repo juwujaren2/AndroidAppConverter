@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -46,7 +47,36 @@ public class ConverterActivity extends AppCompatActivity {
         ddFromValue.setSelection(0);
         ddToValue.setSelection(3);
 
-        //Make results text invisible
+        ddFromValue.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(
+                            AdapterView<?> parent, View view, int position, long id) {
+                        distValue.setText("");
+                        distResult.setText("");
+                        distResult.setVisibility(View.GONE);
+                        txtResult.setVisibility((View.GONE));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        //nothing happens
+                    }
+                });
+        ddToValue.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(
+                            AdapterView<?> parent, View view, int position, long id) {
+                        distValue.setText("");
+                        distResult.setText("");
+                        distResult.setVisibility(View.GONE);
+                        txtResult.setVisibility((View.GONE));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        //nothing happens
+                    }
+                });
     }
 
     //handle click event for convert button
