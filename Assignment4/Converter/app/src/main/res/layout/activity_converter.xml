@@ -97,7 +97,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Result:"
-                android:id="@+id/textView5" />
+                android:id="@+id/txtResult"
+                android:visibility="gone" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -105,7 +106,8 @@
                 android:inputType="numberDecimal"
                 android:ems="10"
                 android:id="@+id/distResult"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout

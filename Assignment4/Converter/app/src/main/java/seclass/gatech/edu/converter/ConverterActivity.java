@@ -1,15 +1,15 @@
 package seclass.gatech.edu.converter;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 
 public class ConverterActivity extends AppCompatActivity {
@@ -19,6 +19,7 @@ public class ConverterActivity extends AppCompatActivity {
     private Spinner ddToValue;
     private EditText distValue;
     private EditText distResult;
+    private TextView txtResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,10 @@ public class ConverterActivity extends AppCompatActivity {
         ddToValue = (Spinner)findViewById(R.id.ddToText);
         distValue = (EditText)findViewById(R.id.distValue);
         distResult = (EditText)findViewById(R.id.distResult);
+        txtResult = (TextView)findViewById(R.id.txtResult);
+
+        //make result input not editable
+        distResult.setKeyListener(null);
 
         //set items for dropdown fields
         String[] dropDownItems = new String[] {"Miles", "Feet", "Inches", "Kilometers", "Meters", "Centimeters"};
@@ -51,132 +56,194 @@ public class ConverterActivity extends AppCompatActivity {
             case R.id.btnConvert:
                 String value = distValue.getText().toString();
                 if (value.length() > 0) {
-
                     //Get the values from the dropdowns
                     String unitFrom = ddFromValue.getSelectedItem().toString();
                     String unitTo = ddToValue.getSelectedItem().toString();
 
                     if (unitFrom.contentEquals(unitTo)) {
                         distResult.setText(value);
+                        distResult.setVisibility(View.VISIBLE);
                     }
                     else {
                         switch (unitFrom) {
                             case "Miles":
                                 if (unitTo == "Feet") {
                                     distResult.setText(convertMilesToFeet(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Inches") {
                                     distResult.setText(convertMilesToInches(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Kilometers") {
                                     distResult.setText(convertMilesToKilometers(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Meters") {
                                     distResult.setText(convertMilesToMeters(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else {
                                     distResult.setText(convertMilesToCentimeters(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 break;
                             case "Feet":
                                 if (unitTo == "Miles") {
                                     distResult.setText(convertFeetToMiles(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Inches") {
                                     distResult.setText(convertFeetToInches(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Kilometers") {
                                     distResult.setText(convertFeetToKm(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Meters") {
                                     distResult.setText(convertFeetToMeters(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else {
                                     distResult.setText(convertFeetToCm(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 break;
                             case "Inches":
                                 if (unitTo == "Miles") {
                                     distResult.setText(convertInchesToMiles(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Feet") {
                                     distResult.setText(convertInchesToFeet(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Kilometers") {
                                     distResult.setText(convertInchesToKm(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Meters") {
                                     distResult.setText(convertInchesToMeters(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else {
                                     distResult.setText(convertInchesToCm(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 break;
                             case "Kilometers":
                                 if (unitTo == "Miles") {
                                     distResult.setText(convertKmToMiles(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Inches") {
                                     distResult.setText(convertKmToInches(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Feet") {
                                     distResult.setText(convertKmToFeet(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Meters") {
                                     distResult.setText(convertKmToMeters(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else {
                                     distResult.setText(convertKmToCm(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 break;
                             case "Meters":
                                 if (unitTo == "Miles") {
                                     distResult.setText(convertMetersToMiles(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Inches") {
                                     distResult.setText(convertMetersToInches(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Kilometers") {
                                     distResult.setText(convertMetersToKm(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Feet") {
                                     distResult.setText(convertMetersToFeet(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else {
                                     distResult.setText(convertMetersToCm(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 break;
                             case "Centimeters":
                                 if (unitTo == "Miles") {
                                     distResult.setText(convertCentimetersToMiles(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Inches") {
                                     distResult.setText(convertCentimetersToInches(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Kilometers") {
                                     distResult.setText(convertCentimetersToKm(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else if (unitTo == "Meters") {
                                     distResult.setText(convertCentimetersToMeters(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 else { //feet
                                     distResult.setText(convertCentimetersToFeet(value));
+                                    distResult.setVisibility(View.VISIBLE);
+                                    txtResult.setVisibility((View.VISIBLE));
                                 }
                                 break;
                         }
                     }
                 }
                 else {
-                        Context context = getApplicationContext();
-                        CharSequence text = "Empty value!";
+                    Context context = getApplicationContext();
+                    CharSequence text = "Empty value!";
                     int duration = Toast.LENGTH_SHORT;
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
                 }
                 break;
             case R.id.btnClear:
                 distValue.setText("");
                 distResult.setText("");
+                distResult.setVisibility(View.GONE);
+                txtResult.setVisibility((View.GONE));
                 ddFromValue.setSelection(0);
                 ddToValue.setSelection(3);
                 break;
