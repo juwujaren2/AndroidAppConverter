@@ -1,0 +1,65 @@
+# File
+  Size:
+  	  Empty. [single][property emptyfile]
+  	  Not Empty.
+  Number of fields in the file:
+  	  None.[single][if !emptyfile] [property noFieldOccurencesFile]
+  	  One.[if !emptyfile && !noFieldOccurencesFile]
+  	  Many.[if !emptyfile && !noFieldOccurencesFile]
+  Number of fields in one line:
+  	  None. 					[single][if !emptyfile] [property noFieldOccurencesLine]
+  	  One.						[single][if !emptyfile && !noFieldOccurencesFile && !noFieldOccurencesLine]
+  	  Many.						[single][if !emptyfile && !noFieldOccurencesFile && !noFieldOccurencesLine]
+  Position of the fields in the file:
+  	  First line. 				[single][if !emptyfile]
+  	  Last line.				[single][if !emptyfile]
+  	  Any.						[if !emptyfile]
+  Number of characters in the file:
+  	  None.						[single][if !emptyfile] [property noCharacterOccurencesFile]
+  	  One.						[single][if !emptyfile && !noCharacterOccurencesFile]
+  	  Many.						[single][if !emptyfile && !noCharacterOccurencesFile]
+  Number of characters in one line:
+  	  None.						[single][if !emptyfile] [property noCharacterOccurencesLine]
+  	  One.						[single][if !emptyfile && !noCharacterOccurencesLine]
+  	  Many.						[single][if !emptyfile && !noCharacterOccurencesLine]
+
+# Field
+  Length of field:
+  Empty.						[single][if !emptyfile][property emptyfield]
+  One.							[single][if !emptyfile]
+More than one. 						[if !emptyfile][property fieldlengthgreaterthanone]
+
+  Type of Range:
+  	  Single Index.				[single][if !emptyfile && !emptyfield] [property singleFieldIndex]
+  	  Multiple Comma Separated without Single Index. 		[single][if !emptyfile && !emptyfield && !singleFieldIndex]
+  	  Multiple Not Comma Separated without Single Index.	[single][if !emptyfile && !emptyfield && !singleFieldIndex]
+  	  Multiple Comma Separated with Single Index. [if !emptyfile && !emptyfield]
+  	  Multiple Not Comma Separated with Single Index. [if !emptyfile && !emptyfield]
+
+# List
+  Length of characters:
+  Empty.						[property emptylist]
+  One.
+  More than one. 				[property listlengthgreaterthanone]
+
+  Type of Range:
+  	  Single Index. 			[single][if !emptyfile && !emptylist] [property singleListIndex]
+  	  Multiple Comma Separated without Single Index.		[single][if !emptyfile && !emptylist && !singleListIndex]
+  	  Multiple Not Comma Separated without Single Index. 	[single][if !emptyfile && !emptylist && !singleListIndex]
+  	  Multiple Comma Separated with Single Index. [if !emptyfile && !emptylist]
+  	  Multiple Not Comma Separated with Single Index. [if !emptyfile && !emptylist]
+
+# Delimiter
+  Prescence of parameter:
+  	  None.						[single][property emptydelimiter]
+  	  One.						[if !emptydelimiter]
+  	  Many.						[if !emptydelimiter]
+  Prescence of quotes:
+  	  Not enclosed.				[if !emptydelimiter]
+  	  Enclosed.
+  	  Incorrect.	[error]
+
+# Filename
+  Presence of a file corresponding to the name:
+  	  Not present. [error]
+  	  Present.
